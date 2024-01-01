@@ -1,6 +1,7 @@
 package com.maoxian.interceptor;
 
 import com.maoxian.constant.JwtClaimsConstant;
+import com.maoxian.context.BaseContext;
 import com.maoxian.properties.JwtProperties;
 import com.maoxian.util.JwtUtil;
 import io.jsonwebtoken.Claims;
@@ -48,8 +49,10 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
         try {
             log.info("jwt校验：{}", token);
             Claims claims = JwtUtil.parseJwt(jwtProperties.getAdminSecretKey(), token);
-            String empId = claims.get(JwtClaimsConstant.EMP_ID).toString();
+            Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
             log.info("当前员工id：{}", empId);
+            // 将员工id存入到ThreadLocal
+            BaseContext.setCurrentId(empId);
         } catch (Exception e) {
             response.setStatus(401);
             return false;

@@ -1,5 +1,9 @@
 package com.maoxian.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 /**
@@ -8,6 +12,9 @@ import java.time.LocalDateTime;
  * @author Lin
  * @date 2023/12/31 11:39
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private Long id;
     /**
