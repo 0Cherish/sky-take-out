@@ -20,7 +20,7 @@
         select * from category
         <where>
             <if test="name != null and name != ''">
-                name like cancat('%',#{name},'%')
+                name like concat('%',#{name},'%')
             </if>
             <if test="type != null">
                 and type = #{type}

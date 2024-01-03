@@ -1,7 +1,6 @@
 package com.maoxian.service.impl;
 
 import com.maoxian.service.SetmealService;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Service;
 
 /**

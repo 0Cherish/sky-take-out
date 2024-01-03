@@ -1,7 +1,9 @@
 package com.maoxian.mapper;
 
 import com.github.pagehelper.Page;
+import com.maoxian.annotation.AutoFill;
 import com.maoxian.dto.EmployeePageQueryDTO;
+import com.maoxian.enumeration.OperationType;
 import com.maoxian.po.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -31,6 +33,7 @@ public interface EmployeeMapper {
     @Insert("insert into employee (name, username, password, phone, sex, id_number, status, create_time, update_time, create_user, update_user) " +
             "values" +
             "(#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})")
+    @AutoFill(OperationType.INSERT)
     void insert(Employee employee);
 
     /**
@@ -46,6 +49,7 @@ public interface EmployeeMapper {
      *
      * @param employee 员工信息
      */
+    @AutoFill(OperationType.UPDATE)
     void update(Employee employee);
 
     /**

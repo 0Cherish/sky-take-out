@@ -1,7 +1,9 @@
 package com.maoxian.mapper;
 
 import com.github.pagehelper.Page;
+import com.maoxian.annotation.AutoFill;
 import com.maoxian.dto.CategoryPageQueryDTO;
+import com.maoxian.enumeration.OperationType;
 import com.maoxian.po.Category;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -23,6 +25,7 @@ public interface CategoryMapper {
     @Insert("insert into category (type, name, sort, status, create_time, update_time, create_user, update_user)" +
             "values" +
             "(#{type},#{name},#{sort},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})")
+    @AutoFill(OperationType.INSERT)
     void insert(Category category);
 
     /**
@@ -46,6 +49,7 @@ public interface CategoryMapper {
      *
      * @param category 分类信息
      */
+    @AutoFill(OperationType.UPDATE)
     void update(Category category);
 
     /**
