@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.maoxian.constant.MessageConstant;
 import com.maoxian.constant.PasswordConstant;
 import com.maoxian.constant.StatusConstant;
-import com.maoxian.context.BaseContext;
 import com.maoxian.dto.EmployeeDTO;
 import com.maoxian.dto.EmployeeLoginDTO;
 import com.maoxian.dto.EmployeePageQueryDTO;
@@ -21,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -74,14 +72,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         // 设置默认密码
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
-//        // 设置当前记录的创建时间和修改时间
-//        employee.setCreateTime(LocalDateTime.now());
-//        employee.setUpdateTime(LocalDateTime.now());
-//
-//        // 设置当前记录的创建人和修改人
-//        employee.setCreateUser(BaseContext.getCurrentId());
-//        employee.setUpdateUser(BaseContext.getCurrentId());
-
         employeeMapper.insert(employee);
     }
 
@@ -101,8 +91,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         employee.setStatus(status);
         employee.setId(id);
-//        employee.setUpdateTime(LocalDateTime.now());
-//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.update(employee);
     }
@@ -118,9 +106,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-
-//        employee.setUpdateTime(LocalDateTime.now());
-//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.update(employee);
     }

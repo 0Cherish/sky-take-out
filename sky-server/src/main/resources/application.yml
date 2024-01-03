@@ -30,3 +30,8 @@ sky:
     admin-secret-key: maoxian
     admin-ttl: 3600000
     admin-token-name: token
+  alioos:
+    endpoint: ${sky.alioos.endpoint}
+    access-key-id: ${sky.alioos.access-key-id}
+    access-key-secret: ${sky.alioos.access-key-secret}
+    bucket-name: ${sky.alioos.bucket-name}
